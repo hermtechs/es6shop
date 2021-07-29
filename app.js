@@ -42,12 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(productsFromJson.items[0].fields.title);
     console.log(productsFromJson.items[0].fields.price);*/
     let shopProducts = productsFromJson.items.map((product) => {
-      return product;
+      const { id } = product.sys;
+      const { title, price } = product.fields;
+      const imageUrl = product.fields.image.fields.file.url;
+      return { id, title, price, imageUrl };
     });
     console.log(shopProducts);
-    const { id } = productsFromJson.items[0].sys;
-    console.log(id);
-    const { title, price } = productsFromJson.items[0].fields;
-    console.log(title, price);
   });
 });
