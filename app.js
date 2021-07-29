@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(productsFromJson.items[0].sys.id);
     console.log(productsFromJson.items[0].fields.title);
     console.log(productsFromJson.items[0].fields.price);*/
-    let shopProducts = productsFromJson.map((product) => {
+    let shopProducts = productsFromJson.items.map((product) => {
       return product;
     });
     console.log(shopProducts);
