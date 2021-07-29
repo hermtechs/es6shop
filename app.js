@@ -28,11 +28,35 @@ class Products {
 class UI {
   updateUi(shopProducts) {
     //  console.log(shopProducts[0].title);
+    let productHTML = "";
     shopProducts.forEach((product) => {
       const productTitle = product.title;
       const productPrice = product.price;
       const productImgUrl = product.imageUrl;
+      const productId = product.id;
+      let productHTML = `
+      <!--single product-->
+<article class="product">
+<div class="the-img-container">
+ <div class="img-container">
+  <img src="${productImgUrl}">
+      
+<buttton class="bag-btn" data-id="${productId}">
+ <i class="fas fa-shopping-cart"></i>
+  add to bag
+  </buttton>
+  </div>
+<h3 class="product-name">${productTitle}</h3>
+ <h4 class="price">$${productPrice}</h4>
+
+ </article>
+ <!--end of single product-->
+      `;
+  productHTML+=productHTML;
+  console.log(productHTML)
+  productsDOM.innerHTML = productHTML;
     });
+  
   }
 }
 
