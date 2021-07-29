@@ -25,9 +25,16 @@ class Products {
   }
 }
 //display shop products
-//class UI{
-
-// }
+class UI {
+  updateUi(shopProducts) {
+    //  console.log(shopProducts[0].title);
+    shopProducts.forEach((product) => {
+      const productTitle = product.title;
+      const productPrice = product.price;
+      const productImgUrl = product.imageUrl;
+    });
+  }
+}
 
 //local storage
 // class Storage{
@@ -35,6 +42,7 @@ class Products {
 // }
 document.addEventListener("DOMContentLoaded", () => {
   const products = new Products();
+  const ui = new UI();
   products.getProducts().then((data) => {
     let productsFromJson = data;
     /* console.log(productsFromJson.items[0]);
@@ -47,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const imageUrl = product.fields.image.fields.file.url;
       return { id, title, price, imageUrl };
     });
-    console.log(shopProducts);
+    //console.log(shopProducts);
+    ui.updateUi(shopProducts);
   });
 });
