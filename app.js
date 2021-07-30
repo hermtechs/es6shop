@@ -28,12 +28,14 @@ class Products {
 class UI {
   updateUi(shopProducts) {
     //  console.log(shopProducts[0].title);
-    let productHTML = "";
+    let products = "";
     shopProducts.forEach((product) => {
       const productTitle = product.title;
       const productPrice = product.price;
       const productImgUrl = product.imageUrl;
       const productId = product.id;
+      // console.log(productId);
+      // console.log(product)
       let productHTML = `
       <!--single product-->
 <article class="product">
@@ -52,9 +54,9 @@ class UI {
  </article>
  <!--end of single product-->
       `;
-  productHTML+=productHTML;
-  console.log(productHTML)
-  productsDOM.innerHTML = productHTML;
+  products += productHTML;
+  // console.log(productHTML)
+  productsDOM.innerHTML = products;
     });
   
   }
