@@ -30,29 +30,29 @@ class UI {
     //  console.log(shopProducts[0].title);
     let products = "";
     shopProducts.forEach((product) => {
-      const productTitle = product.title;
-      const productPrice = product.price;
-      const productImgUrl = product.imageUrl;
-      const productId = product.id;
+      // const productTitle = product.title;
+      // const productPrice = product.price;
+      // const productImgUrl = product.imageUrl;
+      // const productId = product.id;
+      const {title, price, imageUrl, productId} = product;
       // console.log(productId);
       // console.log(product)
       let productHTML = `
-      <!--single product-->
-<article class="product">
-<div class="the-img-container">
- <div class="img-container">
-  <img src="${productImgUrl}">
+      <article class="product">
+      <div class="the-img-container">
+       <div class="img-container">
+        <img src="${imageUrl}" alt="product" class="product-img">
+            
+      <buttton class="bag-btn" data-id="${productId}">
+       <i class="fas fa-shopping-cart"></i>
+        add to bag
+        </buttton>
+        </div>
+      <h3 class="product-name">${title}</h3>
+       <h4 class="price">$${price}</h4>
       
-<buttton class="bag-btn" data-id="${productId}">
- <i class="fas fa-shopping-cart"></i>
-  add to bag
-  </buttton>
-  </div>
-<h3 class="product-name">${productTitle}</h3>
- <h4 class="price">$${productPrice}</h4>
-
- </article>
- <!--end of single product-->
+       </article>
+       <!--end of single product-->
       `;
   products += productHTML;
   // console.log(productHTML)
