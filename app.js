@@ -24,6 +24,13 @@ class Products {
     }
   }
 }
+//local storalo
+class Storage {
+  saveToLocalStorage(shopProducts) {
+    let x = localStorage.setItem("products", JSON.stringfy(shopProducts));
+    console.log(x);
+  }
+}
 //display shop products
 class UI {
   updateUi(shopProducts) {
@@ -34,7 +41,7 @@ class UI {
       // const productPrice = product.price;
       // const productImgUrl = product.imageUrl;
       // const productId = product.id;
-      const {title, price, imageUrl, productId} = product;
+      const { title, price, imageUrl, productId } = product;
       // console.log(productId);
       // console.log(product)
       let productHTML = `
@@ -54,11 +61,10 @@ class UI {
        </article>
        <!--end of single product-->
       `;
-  products += productHTML;
-  // console.log(productHTML)
-  productsDOM.innerHTML = products;
+      products += productHTML;
+      // console.log(productHTML)
+      productsDOM.innerHTML = products;
     });
-  
   }
 }
 
@@ -69,6 +75,7 @@ class UI {
 document.addEventListener("DOMContentLoaded", () => {
   const products = new Products();
   const ui = new UI();
+  const saveToStorage = new Storage();
   products.getProducts().then((data) => {
     let productsFromJson = data;
     /* console.log(productsFromJson.items[0]);
@@ -83,5 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     //console.log(shopProducts);
     ui.updateUi(shopProducts);
+    saveToStorage.saveToLocalStorage(products);
   });
 });
