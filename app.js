@@ -27,8 +27,8 @@ class Products {
 //local storalo
 class Storage {
   saveToLocalStorage(shopProducts) {
-    let x = localStorage.setItem("products", JSON.stringfy(shopProducts));
-    console.log(x);
+     console.log(shopProducts)
+    localStorage.setItem("products", JSON.stringify(shopProducts));
   }
 }
 //display shop products
@@ -90,6 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     //console.log(shopProducts);
     ui.updateUi(shopProducts);
-    saveToStorage.saveToLocalStorage(products);
+    saveToStorage.saveToLocalStorage(shopProducts);
   });
 });
