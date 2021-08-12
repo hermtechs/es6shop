@@ -27,7 +27,7 @@ class Products {
 //local storalo
 class Storage {
   saveToLocalStorage(shopProducts) {
-     console.log(shopProducts)
+    //  console.log(shopProducts)
     localStorage.setItem("products", JSON.stringify(shopProducts));
   }
 }
@@ -37,12 +37,8 @@ class UI {
     //  console.log(shopProducts[0].title);
     let products = "";
     shopProducts.forEach((product) => {
-      // const productTitle = product.title;
-      // const productPrice = product.price;
-      // const productImgUrl = product.imageUrl;
-      // const productId = product.id;
-      const { title, price, imageUrl, productId } = product;
-      // console.log(productId);
+      const { title, price, imageUrl, id } = product;
+      // console.log(id);
       // console.log(product)
       let productHTML = `
       <article class="product">
@@ -50,7 +46,7 @@ class UI {
        <div class="img-container">
         <img src="${imageUrl}" alt="product" class="product-img">
             
-      <buttton class="bag-btn" data-id="${productId}">
+      <buttton class="bag-btn" data-id="${id}">
        <i class="fas fa-shopping-cart"></i>
         add to bag
         </buttton>
@@ -65,6 +61,13 @@ class UI {
       // console.log(productHTML)
       productsDOM.innerHTML = products;
     });
+  }
+  getButtons(){
+    const buttons = [...document.querySelectorAll('.bag-btn')];
+    buttons.forEach(button=>{
+      const id = button.id;
+      
+    })
   }
 }
 
@@ -91,5 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //console.log(shopProducts);
     ui.updateUi(shopProducts);
     saveToStorage.saveToLocalStorage(shopProducts);
-  });
+  }).then(()=>{
+    ui.getButtons();
+  })
 });
