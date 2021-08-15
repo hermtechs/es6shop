@@ -65,8 +65,8 @@ class UI {
   getButtons(){
     const buttons = [...document.querySelectorAll('.bag-btn')];
     buttons.forEach(button=>{
-      const id = button.id;
-      
+      const id = button.dataset.id;
+      console.log(id)
     })
   }
 }
