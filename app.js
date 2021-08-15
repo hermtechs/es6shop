@@ -75,7 +75,7 @@ class UI {
     //  cart = [...productsArray]
     //  console.log(cart)
    let getClickedProductFromStorage = productsArray.find((item)=>{
-     return clickedBtn.dataset.id=item.id
+     return clickedBtn.dataset.id===item.id
      } )
    //Adding Storage Item to Cart
    cart.push(getClickedProductFromStorage);
