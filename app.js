@@ -65,8 +65,22 @@ class UI {
   getButtons(){
     const buttons = [...document.querySelectorAll('.bag-btn')];
     buttons.forEach(button=>{
-      const id = button.dataset.id;
-      console.log(id)
+      // const id = button.dataset.id;
+      button.addEventListener('click', getItemFromStorage)
+      function getItemFromStorage(event){
+        const clickedBtn = event.target;
+      // clickedBtn.dataset.id;
+     let getProd = localStorage.getItem('products')
+     let productsArray = JSON.parse(getProd)
+    //  cart = [...productsArray]
+    //  console.log(cart)
+   let getClickedProductFromStorage = productsArray.find((item)=>{
+     return clickedBtn.dataset.id=item.id
+     } )
+   //Adding Storage Item to Cart
+   cart.push(getClickedProductFromStorage);
+   console.log(cart);
+      }
     })
   }
 }
