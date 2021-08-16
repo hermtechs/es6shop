@@ -8,7 +8,7 @@ const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".cart-total");
 const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector(".products-center");
-
+const cartRowContainer = document.querySelector('.cart-rows-container')
 //cart
 let cart = [];
 
@@ -79,7 +79,37 @@ class UI {
      } )
    //Adding Storage Item to Cart
    cart.push(getClickedProductFromStorage);
-   console.log(cart);
+  //  console.log(cart);
+  const cartItems = cart.map((item)=>{
+    // return item;
+    const {title,price,imageUrl} = item;
+    return {title,price,imageUrl}
+  })
+  
+    cartItems.forEach(item=>{
+      const {title,price,imageUrl}=item;
+      const cartHTML = `
+      <div class="cart-content">
+      <div class="cart-item">
+          <img src="${imageUrl}" alt="product"> 
+        <div>
+            <h4>${title}</h4>
+            <h5 class="item-price">$${price}</h5>
+            <span class="remove-item">remove</span>
+        </div>  
+        <div>
+            <i class="fas fa-chevron-up"></i>
+            <p class="item-amount item-quantity">1</p>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+  </div>`;
+  const cartRowElement = document.createElement('div');
+  cartRowElement.className='cart-content'
+  cartRowElement.innerHTML = cartHTML;
+  cartRowContainer.appendChild(cartRowElement)
+    })
+ 
       }
     })
   }
