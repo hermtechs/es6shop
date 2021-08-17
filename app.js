@@ -9,6 +9,17 @@ const cartTotal = document.querySelector(".cart-total");
 const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector(".products-center");
 const cartRowContainer = document.querySelector('.cart-rows-container')
+
+// openning cart
+cartBtn.addEventListener('click',()=>{
+  cartDOM.style.transform = 'translateX(0%)'
+  cartOverlay.style.visibility = 'visible'
+})
+//closing cart
+closeCartBtn.addEventListener('click', ()=>{
+    cartDOM.style.transform = 'translateX(100%)'
+    cartOverlay.style.visibility = 'hidden'
+})
 //cart
 let cart = [];
 
@@ -108,6 +119,7 @@ class UI {
   cartRowElement.className='cart-content'
   cartRowElement.innerHTML = cartHTML;
   cartRowContainer.appendChild(cartRowElement)
+  console.log(cartRowContainer)
     })
  
       }
